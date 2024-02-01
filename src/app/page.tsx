@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div className="bg-white rounded p-12 w-full max-w-[700px] shadow-md">
       <Typography variant="h3" className="text-center">
-        Welcome to{" "}
+        Welcome to {config.socketServerUrl}
         <Typography variant="h3" as="span" className="text-light-blue">
           Chatify
         </Typography>
