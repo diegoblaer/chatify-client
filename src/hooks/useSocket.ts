@@ -23,7 +23,6 @@ const useSocket = ({
 
   useEffect(() => {
     const socket = io(config.socketServerUrl);
-    console.log(config.socketServerUrl);
 
     socket.emit(SocketEvents.JOIN, currentUser);
 
