@@ -24,9 +24,9 @@ const useSocket = ({
   useEffect(() => {
     const socket = io(config.socketServerUrl);
 
-    socket.emit(SocketEvents.JOIN, currentUser);
+    socket.emit("join", currentUser);
 
-    socket.on(SocketEvents.CONNECT, () => {
+    socket.on(SocketEvents.CONNECT, (err) => {
       onSocketConnection(socket);
     });
 

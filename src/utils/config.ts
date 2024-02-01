@@ -3,7 +3,7 @@ interface Config {
 }
 
 const config: Config = {
-  socketServerUrl: process.env.SOCKET_SERVER_URL ?? "",
+  socketServerUrl: process.env.NEXT_PUBLIC_SOCKET_SERVER_URL ?? "",
 };
 
 export default config;
