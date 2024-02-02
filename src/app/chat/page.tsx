@@ -4,9 +4,11 @@ import ChatHistory from "@/components/feature/chat/ChatHistory";
 import ChatMessageForm from "@/components/feature/chat/ChatMessageForm";
 import ConnectedUsersList from "@/components/feature/chat/ConnectedUsersList";
 import useChat from "@/hooks/useChat";
+import config from "@/utils/config";
 
 export default function Chat() {
   const { sendMessage, chatEvents, connectedUsersList } = useChat();
+
   return (
     <div className="bg-white rounded w-full h-full max-w-[1200px] shadow-md grid grid-cols-5 grow  overflow-auto">
       <div className="bg-light-purple h-full flex flex-col overflow-auto">
@@ -15,7 +17,7 @@ export default function Chat() {
           as="div"
           className="py-4 text-center text-light-gray bg-dark-purple font-semibold"
         >
-          CONNECTED USERS
+          CONNECTED USERS {config.socketServerUrl}
         </Typography>
         <div className="grow">
           <ConnectedUsersList items={connectedUsersList} />
