@@ -27,6 +27,7 @@ const useSocket = ({
     socket.emit(SocketEvents.JOIN, currentUser);
 
     socket.on(SocketEvents.CONNECT, (err) => {
+      console.log({ err });
       onSocketConnection(socket);
     });
 
