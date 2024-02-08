@@ -6,7 +6,7 @@ import useCurrentUser from "./useCurrentUser";
 import useSocket from "./useSocket";
 
 const useChat = () => {
-  const [connectedUsersList, setConnectedUsersList] = useState<User[]>([]);
+  const [connectedUsers, setConnectedUsers] = useState<User[]>([]);
   const [socket, setSocket] = useState<Socket | undefined>();
   const [chatEvents, setChatEvents] = useState<ChatEvent[]>([]);
   const currentUser = useCurrentUser();
@@ -22,7 +22,7 @@ const useChat = () => {
   }, []);
 
   const onUserConnection = useCallback((user: User, connectedUsers: User[]) => {
-    setConnectedUsersList(connectedUsers);
+    setConnectedUsers(connectedUsers);
     setChatEvents((prevEvents) => [
       ...prevEvents,
       {
@@ -34,7 +34,7 @@ const useChat = () => {
 
   const onUserDisconnection = useCallback(
     (user: User, connectedUsers: User[]) => {
-      setConnectedUsersList(connectedUsers);
+      setConnectedUsers(connectedUsers);
       setChatEvents((prevEvents) => [
         ...prevEvents,
         {
@@ -64,7 +64,7 @@ const useChat = () => {
   return {
     sendMessage,
     currentUser: { ...currentUser, id: socket?.id },
-    connectedUsersList,
+    connectedUsers,
     chatEvents,
   };
 };

@@ -11,7 +11,11 @@ interface MessageEventProps {
 
 const MessageEvent = ({ message }: MessageEventProps) => {
   return (
-    <div className={`flex flex-col gap-2 ${message.fromMe ? "self-end" : ""}`}>
+    <div
+      className={`flex flex-col gap-2 ${
+        message.fromMe ? "self-end items-end" : ""
+      }`}
+    >
       <div className="flex gap-2 items-center">
         <Avatar avatar={message.user.avatar} size="xsmall" />
         <Typography variant="xsmall" className="font-semibold">

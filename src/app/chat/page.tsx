@@ -1,16 +1,17 @@
 "use client";
 import Typography from "@/components/common/Typography";
+import ChatHeader from "@/components/feature/chat/ChatHeader";
 import ChatHistory from "@/components/feature/chat/ChatHistory";
 import ChatMessageForm from "@/components/feature/chat/ChatMessageForm";
 import ConnectedUsersList from "@/components/feature/chat/ConnectedUsersList";
 import useChat from "@/hooks/useChat";
 
 export default function Chat() {
-  const { sendMessage, chatEvents, connectedUsersList } = useChat();
+  const { sendMessage, chatEvents, connectedUsers } = useChat();
 
   return (
-    <div className="bg-white rounded w-full h-full max-w-[1200px] shadow-md grid grid-cols-5 grow  overflow-auto">
-      <div className="bg-light-purple h-full flex flex-col overflow-auto">
+    <div className="bg-white rounded w-full h-full max-w-[1200px] shadow-md grid md:grid-cols-5 grow  overflow-auto">
+      <div className="bg-light-purple h-full flex-col overflow-auto md:flex hidden">
         <Typography
           variant="xsmall"
           as="div"
@@ -19,10 +20,11 @@ export default function Chat() {
           CONNECTED USERS
         </Typography>
         <div className="grow">
-          <ConnectedUsersList items={connectedUsersList} />
+          <ConnectedUsersList connectedUsers={connectedUsers} />
         </div>
       </div>
-      <div className="col-span-4 h-full flex flex-col overflow-hidden">
+      <div className="md:col-span-4 h-full flex flex-col overflow-hidden ">
+        <ChatHeader connectedUsers={connectedUsers} />
         <ChatHistory chatEvents={chatEvents} />
         <ChatMessageForm onMessageSubmit={sendMessage} />
       </div>
