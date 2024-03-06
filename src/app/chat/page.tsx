@@ -4,10 +4,13 @@ import ChatHeader from "@/components/feature/chat/ChatHeader";
 import ChatHistory from "@/components/feature/chat/ChatHistory";
 import ChatMessageForm from "@/components/feature/chat/ChatMessageForm";
 import ConnectedUsersList from "@/components/feature/chat/ConnectedUsersList";
+import LoadingChatBanner from "@/components/feature/chat/LoadingChatBanner";
 import useChat from "@/hooks/useChat";
 
 export default function Chat() {
-  const { sendMessage, chatEvents, connectedUsers } = useChat();
+  const { sendMessage, chatEvents, connectedUsers, connected } = useChat();
+
+  if (!connected) return <LoadingChatBanner />;
 
   return (
     <div className="bg-white rounded w-full h-full max-w-[1200px] shadow-md grid md:grid-cols-5 grow  overflow-auto">

@@ -66,6 +66,7 @@ const useChat = () => {
     currentUser: { ...currentUser, id: socket?.id },
     connectedUsers,
     chatEvents,
+    connected: socket?.connected,
   };
 };
 
